@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Doggies</title>
+    <style>
+        body {
+            background-color: cadetblue;
+        }
+        img { 
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>The nicest doggies ever</h1>
+
+    <script>
+        function addImg(url) {
+            const image = document.createElement('img');
+            image.src = url;
+            document.body.appendChild(image);
+        }
+
+        // addImg("https://images.dog.ceo/breeds/samoyed/n02111889_4634.jpg");
+        // addImg("https://images.dog.ceo/breeds/poodle-miniature/n02113712_3120.jpg");
+
+        // 'https://dog.ceo/api/breeds/image/random'
+
+        async function addRandomDoggieImg() {
+            const doggieApiResponse = await fetch('https://dog.ceo/api/breeds/image/random');
+            const doggieJson = await doggieApiResponse.json();
+
+            addImg(doggieJson.message);
+        }
+
+        addRandomDoggieImg();
+
+    </script>
+</body>
+
+</html>
